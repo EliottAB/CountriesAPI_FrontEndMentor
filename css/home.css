@@ -1,0 +1,45 @@
+.homemain{
+    display: flex;
+    margin-top: 3em;
+    padding: 0 4em;
+}
+
+.searching{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.searchbar{
+    width: 27em;
+    padding: 1em 1.5em;
+    border-radius: .5em;
+    background-color: white;
+    box-shadow: 0 0 1em lightgray;
+}
+
+.searchbar input{
+    width: 90%;
+    margin-left: 1.2em;
+    border: none;
+    outline: none;
+}
+
+.searchbar i{
+    color: hsl(0, 0%, 52%);
+}
+
+.select-box{
+    width: 13em;
+    background-color: white;
+    box-shadow: 0 0 1em lightgray;
+    border-radius: .5em;
+}
+
+.searching select{
+    width: 90%;
+    padding: 1em;
+    border: none;
+    border-radius: .5em;
+    background-color: white;
+}
