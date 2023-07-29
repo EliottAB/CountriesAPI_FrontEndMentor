@@ -3,12 +3,11 @@ import { getDatas } from "../scripts/getDatas.js";
 const countriesContainer = document.querySelector(".countries")
 const filterInput = document.querySelector(".searching select")
 const datas = await getDatas()
-console.log(filterInput.value)
 
 function renderCountries(){
     countriesContainer.innerHTML = ""
     datas.forEach(country => {
-        if (country.region.toLowerCase() === filterInput.value || filterInput.value === "" || filterInput.value === "Filter by Region") {   
+        if (country.region.toLowerCase() === filterInput.value || filterInput.value === "") {   
             const linkToCountry = document.createElement("a")
             const newCountry = document.createElement("section")
             const countryFlag = document.createElement("img")
