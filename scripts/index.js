@@ -2,12 +2,19 @@ import { getDatas } from "../scripts/getDatas.js";
 
 const countriesContainer = document.querySelector(".countries")
 const filterInput = document.querySelector(".searching select")
+const searchInput = document.querySelector(".searchbar input")
 const datas = await getDatas()
 
+//this function render the good countries
 function renderCountries(){
     countriesContainer.innerHTML = ""
     datas.forEach(country => {
-        if (country.region.toLowerCase() === filterInput.value || filterInput.value === "") {   
+        //this condition check the filters and search inputs
+        if (
+            (country.region.toLowerCase() === filterInput.value || filterInput.value === "") 
+            && 
+            (simplifyString(country.name).includes(simplifyString(searchInput.value)) || simplifyString(country.capital).includes(simplifyString(searchInput.value)))
+            ){   
             const linkToCountry = document.createElement("a")
             const newCountry = document.createElement("section")
             const countryFlag = document.createElement("img")
@@ -40,7 +47,15 @@ function renderCountries(){
     });
 }
 
+function simplifyString(string){
+    return String(string).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+}
+
 filterInput.addEventListener("change", ()=>{
+    renderCountries()
+})
+
+searchInput.addEventListener("input", ()=>{
     renderCountries()
 })
 
