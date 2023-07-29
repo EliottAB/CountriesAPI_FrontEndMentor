@@ -17,6 +17,7 @@ header div{
     display: flex;
     align-items: center;
     position: relative;
+    cursor: pointer;
 }
 
 header div i{
