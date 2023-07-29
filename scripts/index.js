@@ -45,6 +45,12 @@ function renderCountries(){
             countriesContainer.appendChild(linkToCountry)
         }
     });
+    if(countriesContainer.childElementCount === 0){
+        let noCountry = document.createElement("p")
+        noCountry.classList.add("no-country")
+        noCountry.innerHTML = "No country found"
+        countriesContainer.appendChild(noCountry)
+    }
 }
 
 function simplifyString(string){

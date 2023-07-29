@@ -86,3 +86,8 @@
 .infotitle{
     font-weight: 600;
 }
+
+.no-country{
+    position: absolute;
+    left: 5em;
+}
