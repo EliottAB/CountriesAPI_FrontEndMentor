@@ -1,15 +1,9 @@
 import { getDatas } from "../scripts/getDatas.js";
 
 const countriesContainer = document.querySelector(".countries")
-const searching = document.querySelector(".searching")
 const filterInput = document.querySelector(".searching select")
 const searchInput = document.querySelector(".searchbar input")
-const darkModeButton = document.querySelector(".dark-mode-button")
-const header = document.querySelector("header")
-const lightMoon = document.querySelector(".lightmoon")
-const darkMoon = document.querySelector(".darkmoon")
 const datas = await getDatas()
-let darkMode = false
 
 //this function render the good countries
 function renderCountries(){
@@ -59,27 +53,6 @@ function renderCountries(){
     }
 }
 
-//this function change the page as "dark" or "light"
-function switchMode() {
-    if (darkMode === false) {
-        document.body.classList.add("dark")
-        header.classList.add("dark")
-        searching.classList.add("dark")
-        countriesContainer.classList.add("dark")
-        darkMoon.style.opacity = "100%"
-        lightMoon.style.opacity = "0"
-        darkMode = true
-    }else{
-        document.body.classList.remove("dark")
-        header.classList.remove("dark")
-        searching.classList.remove("dark")
-        countriesContainer.classList.remove("dark")
-        darkMoon.style.opacity = "0"
-        lightMoon.style.opacity = "100%"
-        darkMode = false
-    }
-}
-
 //this function transform the string to make it "compatible"
 function simplifyString(string){
     return String(string).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
@@ -91,10 +64,6 @@ filterInput.addEventListener("change", ()=>{
 
 searchInput.addEventListener("input", ()=>{
     renderCountries()
-})
-
-darkModeButton.addEventListener("click", ()=>{
-    switchMode()
 })
 
 renderCountries()
