@@ -1,0 +1,22 @@
+.country-main{
+    display: flex;
+    flex-direction: column;
+    padding: 4.5em 0 0 4em;
+}
+
+.backlink{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 9em;
+    height: 2.7em;
+    border-radius: .5em;
+    box-shadow: 0 0 1em lightgrey;
+    color: black;
+    background-color: white;
+}
+
+.backlink i{
+    position: relative;
+    right: 1em;
+}

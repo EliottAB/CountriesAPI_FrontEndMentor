@@ -1,4 +1,4 @@
-import { getDatas } from "../scripts/getDatas.js";
+import { getDatas } from "./getDatas.js";
 
 const countriesContainer = document.querySelector(".countries")
 const filterInput = document.querySelector(".searching select")
@@ -25,7 +25,7 @@ function renderCountries(){
             
             linkToCountry.setAttribute("href", "pages/country.html"  + "?id=" + country.id)
             countryFlag.setAttribute("src", country.flag)
-            countryFlag.setAttribute("alt", country.name + " flag")
+            countryFlag.setAttribute("alt", country.name ? country.name : "country" + " flag")
             countryName.innerHTML = country.name
             countryPopulation.innerHTML = "<span class='infotitle'>Population: </span>" + (country.population ? country.population.toLocaleString("en-US") : country.population)
             countryRegion.innerHTML = "<span class='infotitle'>Region: </span>" + country.region

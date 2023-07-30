@@ -3,19 +3,19 @@ let countries
 let countryID = 0
 
 //get the coutry or countries datas.
-//arguments : targetCountry: string;
-export async function getDatas(targetCountry){
+//arguments : targetIndex: number;
+export async function getDatas(targetIndex){
     return fetch(url)
     .then(response => response.json())
     .then(data => {
         countries = data
-        if (targetCountry === undefined) {
+        if (targetIndex === undefined) {
             let countriesinfos = []
             countries.forEach(country => {
                 countriesinfos.push({
                     name: country.name,
                     population: country.population,
-                    region: country.region,
+                    region: country.region ? country.region : "undefined",
                     capital: country.capital,
                     flag: country.flag,
                     id: countryID
@@ -24,7 +24,20 @@ export async function getDatas(targetCountry){
             });
             return countriesinfos
         }else{
-            return countries.find(country => country.name === targetCountry)
+            let country = countries[targetIndex]
+            let countryinfos = {
+                name: country.name,
+                flag: country.flag,
+                nativeName: country.nativeName,
+                population:  country.population,
+                region: country.region,
+                subregion: country.subregion,
+                capital: country.capital,
+                topLevelDomain: Array.isArray(country.topLevelDomain) ? country.topLevelDomain[0] : undefined,
+                currencies: Array.isArray(country.currencies) ? country.currencies[0].name : undefined,
+                languages: Array.isArray(country.languages) ? country.languages : undefined
+            }
+            return countryinfos
         }
     })
     .catch(error => {

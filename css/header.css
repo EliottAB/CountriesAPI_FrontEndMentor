@@ -22,15 +22,17 @@ header h1{
 
 .dark-mode-button{
     display: flex;
+    justify-content: flex-end;
     align-items: center;
     position: relative;
+    width: 6.4em;
     cursor: pointer;
 }
 
 .dark-mode-button i{
     position: absolute;
     top: .06em;
-    left: -1.3em;
+    left: 0;
     transform: rotate(-15deg);
     transition: opacity .2s;
 }
