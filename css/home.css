@@ -17,6 +17,7 @@
     border-radius: .5em;
     background-color: white;
     box-shadow: 0 0 1em lightgray;
+    transition: background-color .2s, box-shadow .2s, color .2s;
 }
 
 .searchbar input{
@@ -24,6 +25,7 @@
     margin-left: 1.2em;
     border: none;
     outline: none;
+    transition: background-color .2s, color .2s;
 }
 
 .searchbar i{
@@ -35,6 +37,13 @@
     background-color: white;
     box-shadow: 0 0 1em lightgray;
     border-radius: .5em;
+    transition: background-color .2s, box-shadow .2s;
+}
+
+.searching.dark .select-box, .searching.dark .searchbar{
+    box-shadow: 0 0 1em rgb(30, 30, 30);
+    background-color: hsl(209, 23%, 22%);
+    color: white;
 }
 
 .searching select{
@@ -43,6 +52,12 @@
     border: none;
     border-radius: .5em;
     background-color: white;
+    transition: background-color .2s, box-shadow .2s, color .2s;
+}
+
+.searching.dark select, .searching.dark .searchbar input{
+    color: white;
+    background-color: hsl(209, 23%, 22%);
 }
 
 .countries{
@@ -63,6 +78,13 @@
     box-shadow: 0 0 1em lightgray;
     color: black;
     background-color: white;
+    transition: color .2s, background-color .2s, box-shadow .2s;
+}
+
+.countries.dark section{
+    box-shadow: 0 0 1em rgb(30, 30, 30);
+    color: white;
+    background-color: hsl(209, 23%, 22%);
 }
 
 .country-flag {
@@ -73,9 +95,9 @@
 }
 
 .country-name{
-    margin: 1.5em 0 1em 1.2em;
+    margin: 1.5em 0 1em 1.2em !important;
     font-size: 1.2em;
-    font-weight: 800;
+    font-weight: 800 !important;
 }
 
 .countries section p {

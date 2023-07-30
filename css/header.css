@@ -6,6 +6,13 @@ header{
     padding: 0 4em;
     box-shadow: 0 0 1em lightgray;
     background-color: white;
+    transition: background-color .2s, box-shadow .2s, color .2s;
+}
+
+header.dark{
+    color: white;
+    box-shadow: 0 0 1em rgb(30, 30, 30);
+    background-color: hsl(209, 23%, 22%);
 }
 
 header h1{
@@ -13,20 +20,25 @@ header h1{
     font-weight: 800;
 }
 
-header div{
+.dark-mode-button{
     display: flex;
     align-items: center;
     position: relative;
     cursor: pointer;
 }
 
-header div i{
+.dark-mode-button i{
     position: absolute;
     top: .06em;
     left: -1.3em;
     transform: rotate(-15deg);
+    transition: opacity .2s;
 }
 
-header div i:nth-child(2){
+.darkmoon{
     opacity: 0;
+}
+
+.dark-mode-button p{
+    user-select: none;
 }
