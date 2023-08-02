@@ -35,8 +35,10 @@ export async function getDatas(targetIndex){
                 capital: country.capital,
                 topLevelDomain: Array.isArray(country.topLevelDomain) ? country.topLevelDomain[0] : undefined,
                 currencies: Array.isArray(country.currencies) ? country.currencies[0].name : undefined,
-                languages: Array.isArray(country.languages) ? country.languages : undefined
+                languages: Array.isArray(country.languages) ? country.languages : undefined,
+                borders : getBorders(countries, country)
             }
+            console.log(getBorders(countries, country))
             return countryinfos
         }
     })
@@ -44,4 +46,11 @@ export async function getDatas(targetIndex){
         console.log("Une erreur s'est produite :", error);
         return "error"
     });
+}
+
+function getBorders(countries, country){
+    const borders = countries
+        .filter(element => country.borders && country.borders.includes(element.alpha3Code))
+        .map(element => element.name);
+    return borders
 }

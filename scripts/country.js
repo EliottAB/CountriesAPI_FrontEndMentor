@@ -5,9 +5,11 @@ const countryID = urlParams.get("id")
 const datas = await getDatas(countryID)
 
 const countryContainer = document.querySelector(".country-infos")
+const nameContainer = document.querySelector(".country-name")
 const flagContainer = document.querySelector(".country-flag")
 const infosContainer = document.querySelector(".country-infos")
 const detailsContainer = document.querySelector(".country-details")
+const borderList = document.querySelector(".border-countries ul")
 
 const details = [
     "<span>Native Name: </span>" + datas.nativeName,
@@ -23,19 +25,30 @@ const details = [
 function renderCountry(){
     if (typeof datas === "object") {
         const countryFlag = document.createElement("img")
-        const countryName = document.createElement("h2")
+        
+        countryFlag.setAttribute("src", datas.flag)
+        countryFlag.setAttribute("alt", datas.name ? datas.name : "country" + " flag")
+        nameContainer.innerHTML = datas.name
+        
+        flagContainer.appendChild(countryFlag)
+
+        //this code put the country details in the DOM
         details.forEach(detail => {
             let newDetail = document.createElement("li")
             newDetail.innerHTML = detail
             detailsContainer.appendChild(newDetail)
         });
 
-        countryFlag.setAttribute("src", datas.flag)
-        countryFlag.setAttribute("alt", datas.name ? datas.name : "country" + " flag")
-        countryName.innerHTML = datas.name
-
-        flagContainer.appendChild(countryFlag)
-        infosContainer.appendChild(countryName)
+        //this code put the country border-countries list in the DOM (&in the list)
+        if (datas.borders.length === 0) {
+            borderList.innerHTML = "<li>None</li>"
+        }else{
+            datas.borders.forEach(border => {
+                const newBorder = document.createElement("li")
+                newBorder.innerHTML = border
+                borderList.appendChild(newBorder)
+            })
+        }
     }else{
         countryContainer.innerHTML = ""
         const errorMessage = document.createElement("p")

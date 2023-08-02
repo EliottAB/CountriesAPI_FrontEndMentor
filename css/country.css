@@ -20,3 +20,28 @@
     position: relative;
     right: 1em;
 }
+
+.country-infos-container{
+    margin-top: 4em;
+    display: flex;
+}
+
+.country-flag{
+    width: 36em;
+    height: 24.12em;
+}
+
+.country-flag img{
+    width: 100%;
+    height: 100%;
+}
+
+.country-infos{
+    margin-left: 6em;
+}
+
+.country-name{
+    margin-bottom: 1em;
+    font-size: 2em;
+    font-weight: 800;
+}
