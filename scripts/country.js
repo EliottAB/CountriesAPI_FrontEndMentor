@@ -2,7 +2,8 @@ import { getDatas } from "./getDatas.js";
 
 const urlParams = new URLSearchParams(window.location.search)
 const countryID = urlParams.get("id")
-const datas = await getDatas(countryID)
+const countryDatas = await getDatas(countryID)
+const allDatas = await getDatas()
 
 const countryContainer = document.querySelector(".country-infos")
 const nameContainer = document.querySelector(".country-name")
@@ -12,23 +13,23 @@ const detailsContainer = document.querySelector(".country-details")
 const borderList = document.querySelector(".border-countries ul")
 
 const details = [
-    "<span>Native Name: </span>" + datas.nativeName,
-    "<span>Population: </span>" + (datas.population ? datas.population.toLocaleString("en-US") : datas.population),
-    "<span>Region: </span>" + datas.region,
-    "<span>Sub Region: </span>" + datas.subregion,
-    "<span>Capital: </span>" + datas.capital,
-    "<span>Top Level Domain: </span>" + datas.topLevelDomain,
-    "<span>Currencies: </span>" + datas.currencies,
+    "<span>Native Name: </span>" + countryDatas.nativeName,
+    "<span>Population: </span>" + (countryDatas.population ? countryDatas.population.toLocaleString("en-US") : countryDatas.population),
+    "<span>Region: </span>" + countryDatas.region,
+    "<span>Sub Region: </span>" + countryDatas.subregion,
+    "<span>Capital: </span>" + countryDatas.capital,
+    "<span>Top Level Domain: </span>" + countryDatas.topLevelDomain,
+    "<span>Currencies: </span>" + countryDatas.currencies,
     "<span>Languages: </span>" + getLanguages()
 ]
 
 function renderCountry(){
-    if (typeof datas === "object") {
+    if (typeof countryDatas === "object") {
         const countryFlag = document.createElement("img")
         
-        countryFlag.setAttribute("src", datas.flag)
-        countryFlag.setAttribute("alt", datas.name ? datas.name : "country" + " flag")
-        nameContainer.innerHTML = datas.name
+        countryFlag.setAttribute("src", countryDatas.flag)
+        countryFlag.setAttribute("alt", countryDatas.name ? countryDatas.name : "country" + " flag")
+        nameContainer.innerHTML = countryDatas.name
         
         flagContainer.appendChild(countryFlag)
 
@@ -40,12 +41,18 @@ function renderCountry(){
         });
 
         //this code put the country border-countries list in the DOM (&in the list)
-        if (datas.borders.length === 0) {
+        if (countryDatas.borders.length === 0) {
             borderList.innerHTML = "<li>None</li>"
         }else{
-            datas.borders.forEach(border => {
+            countryDatas.borders.forEach(border => {
                 const newBorder = document.createElement("li")
-                newBorder.innerHTML = border
+                const newBorderLink = document.createElement("a")
+                const borderID = allDatas.find(country => {
+                    return country.name === border
+                }).id
+                newBorderLink.setAttribute("href", "country.html?id=" + borderID)
+                newBorderLink.innerHTML = border
+                newBorder.appendChild(newBorderLink)
                 borderList.appendChild(newBorder)
             })
         }
@@ -60,9 +67,9 @@ function renderCountry(){
 
 function getLanguages(){
     let languages = ""
-    if (Array.isArray(datas.languages)) {
-        datas.languages.forEach((lang, index) => {
-            if (index+1 === datas.languages.length) {
+    if (Array.isArray(countryDatas.languages)) {
+        countryDatas.languages.forEach((lang, index) => {
+            if (index+1 === countryDatas.languages.length) {
                 languages += lang.name
             }else{
                 languages += lang.name + ", "

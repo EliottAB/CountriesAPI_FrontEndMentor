@@ -38,7 +38,6 @@ export async function getDatas(targetIndex){
                 languages: Array.isArray(country.languages) ? country.languages : undefined,
                 borders : getBorders(countries, country)
             }
-            console.log(getBorders(countries, country))
             return countryinfos
         }
     })

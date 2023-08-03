@@ -19,3 +19,9 @@ body{
 body.dark{
     background-color: hsl(207, 26%, 17%);
 }
+
+@media screen and (max-width: 1080px){
+    body{
+        font-size: 1.481481vw;
+    }
+}
