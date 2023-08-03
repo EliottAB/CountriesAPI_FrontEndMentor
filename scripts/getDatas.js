@@ -1,4 +1,4 @@
-const url = "data/data.json"
+const url = "./data/data.json"
 let countries
 let countryID = 0
 
