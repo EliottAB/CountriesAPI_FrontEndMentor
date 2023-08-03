@@ -1,10 +1,9 @@
-const url = document.title == "Countries\ API" ? "./data/data.json" : "../data/data.json"
 let countries
 let countryID = 0
 
 //get the coutry or countries datas.
-//arguments : targetIndex: number;
-export async function getDatas(targetIndex){
+//arguments : url: string; targetIndex: number;
+export async function getDatas(url="./data/data.json", targetIndex){
     return fetch(url)
     .then(response => response.json())
     .then(data => {

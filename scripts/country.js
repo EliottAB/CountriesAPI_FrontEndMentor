@@ -2,8 +2,8 @@ import { getDatas } from "./getDatas.js";
 
 const urlParams = new URLSearchParams(window.location.search)
 const countryID = urlParams.get("id")
-const countryDatas = await getDatas(countryID)
-const allDatas = await getDatas()
+const countryDatas = await getDatas("../data/data.json", countryID)
+const allDatas = await getDatas("../data/data.json")
 
 const countryContainer = document.querySelector(".country-infos-container")
 const nameContainer = document.querySelector(".country-name")
