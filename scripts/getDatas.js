@@ -8,6 +8,7 @@ export async function getDatas(targetIndex){
     return fetch(url)
     .then(response => response.json())
     .then(data => {
+        console.log(data)
         countries = data ? data : []
         if (targetIndex === undefined) {
             let countriesinfos = []
