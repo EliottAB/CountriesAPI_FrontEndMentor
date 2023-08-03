@@ -5,14 +5,14 @@ const countryID = urlParams.get("id")
 const countryDatas = await getDatas(countryID)
 const allDatas = await getDatas()
 
-const countryContainer = document.querySelector(".country-infos")
+const countryContainer = document.querySelector(".country-infos-container")
 const nameContainer = document.querySelector(".country-name")
 const flagContainer = document.querySelector(".country-flag")
 const infosContainer = document.querySelector(".country-infos")
 const detailsContainer = document.querySelector(".country-details")
 const borderList = document.querySelector(".border-countries ul")
 
-const details = [
+const details = countryDatas ? [
     "<span>Native Name: </span>" + countryDatas.nativeName,
     "<span>Population: </span>" + (countryDatas.population ? countryDatas.population.toLocaleString("en-US") : countryDatas.population),
     "<span>Region: </span>" + countryDatas.region,
@@ -21,7 +21,7 @@ const details = [
     "<span>Top Level Domain: </span>" + countryDatas.topLevelDomain,
     "<span>Currencies: </span>" + countryDatas.currencies,
     "<span>Languages: </span>" + getLanguages()
-]
+] : null
 
 function renderCountry(){
     if (typeof countryDatas === "object") {

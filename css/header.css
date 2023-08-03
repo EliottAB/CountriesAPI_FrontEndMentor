@@ -44,3 +44,12 @@ header h1{
 .dark-mode-button p{
     user-select: none;
 }
+
+@media screen and (max-width: 780px){
+    header{
+        padding: .5em 2em;
+    }
+    .dark-mode-button i{
+        top: .2em;
+    }
+}

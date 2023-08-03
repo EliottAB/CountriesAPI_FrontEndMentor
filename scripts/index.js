@@ -3,7 +3,8 @@ import { getDatas } from "./getDatas.js";
 const countriesContainer = document.querySelector(".countries")
 const filterInput = document.querySelector(".searching select")
 const searchInput = document.querySelector(".searchbar input")
-const datas = await getDatas()
+let datas = await getDatas()
+datas = datas ? datas : []
 
 //this function render the good countries
 function renderCountries(){
@@ -39,10 +40,10 @@ function renderCountries(){
     
             let countryinfos = [countryFlag, countryName, countryPopulation, countryRegion, countryCapital]
             countryinfos.forEach(element => {
-                newCountry.appendChild(element)
-                linkToCountry.appendChild(newCountry)
+                linkToCountry.appendChild(element)
+                newCountry.appendChild(linkToCountry)
             });
-            countriesContainer.appendChild(linkToCountry)
+            countriesContainer.appendChild(newCountry)
         }
     });
     if(countriesContainer.childElementCount === 0){

@@ -81,11 +81,20 @@
     transition: color .2s, background-color .2s, box-shadow .2s;
 }
 
+.countries section a{
+    color: black;
+    transition: color .2s;
+}
+
 .countries.dark section{
     box-shadow: 0 0 1em rgb(30, 30, 30);
-    color: white;
     background-color: hsl(209, 23%, 22%);
 }
+
+.countries.dark section a{
+    color: white;
+}
+
 
 .country-flag {
     width: 100%;
@@ -112,4 +121,45 @@
 .no-country{
     position: absolute;
     left: 5em;
+    transition: color .2s;
+}
+
+.dark .no-country{
+    color: white;
+}
+
+@media screen and (max-width: 780px){
+
+    .homemain{
+        padding: 0 2em;
+    }
+
+    .searching{
+        flex-direction: column;
+        margin-bottom: 3em;
+    }
+
+    .searchbar{
+        width: calc(100% - 3em);
+        margin-bottom: 3em;
+    }
+
+    .searching .select-box{
+        align-self: flex-start;
+    }
+    
+    .countries{
+        grid-gap: 4em;
+        grid-template-columns: 1fr;
+    }
+
+    .countries section{
+        width: 80%;
+        height: auto;
+        padding-bottom: 2em;
+    }
+
+    .country-flag{
+        height: 15em;
+    }
 }

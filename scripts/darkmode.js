@@ -4,6 +4,8 @@ const darkMoon = document.querySelector(".darkmoon")
 const lightMoon = document.querySelector(".lightmoon")
 const header = document.querySelector("header")
 const searching = document.querySelector(".searching")
+const backLink = document.querySelector(".backlink")
+const countryInfosContainer = document.querySelector(".country-infos-container")
 let darkMode = false
 
 //this function change the page as "dark" or "light"
@@ -16,6 +18,9 @@ function switchMode() {
         if (countriesContainer) {
             searching.classList.add("dark")
             countriesContainer.classList.add("dark")
+        }else{
+            backLink.classList.add("dark")
+            countryInfosContainer.classList.add("dark")
         }
         darkMode = true
     }else{
@@ -26,6 +31,9 @@ function switchMode() {
         if (countriesContainer) {
             searching.classList.remove("dark")
             countriesContainer.classList.remove("dark")
+        }else{
+            backLink.classList.remove("dark")
+            countryInfosContainer.classList.remove("dark")
         }
         darkMode = false
     }

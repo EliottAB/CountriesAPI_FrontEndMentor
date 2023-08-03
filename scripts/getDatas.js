@@ -8,7 +8,7 @@ export async function getDatas(targetIndex){
     return fetch(url)
     .then(response => response.json())
     .then(data => {
-        countries = data
+        countries = data ? data : []
         if (targetIndex === undefined) {
             let countriesinfos = []
             countries.forEach(country => {
@@ -36,14 +36,14 @@ export async function getDatas(targetIndex){
                 topLevelDomain: Array.isArray(country.topLevelDomain) ? country.topLevelDomain[0] : undefined,
                 currencies: Array.isArray(country.currencies) ? country.currencies[0].name : undefined,
                 languages: Array.isArray(country.languages) ? country.languages : undefined,
-                borders : getBorders(countries, country)
+                borders : Array.isArray(country.borders) ? getBorders(countries, country) : []
             }
             return countryinfos
         }
     })
     .catch(error => {
         console.log("Une erreur s'est produite :", error);
-        return "error"
+        return undefined
     });
 }
 
