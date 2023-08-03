@@ -1,4 +1,4 @@
-const url = "./data/data.json"
+const url = document.title == "Countries\ API" ? "./data/data.json" : "../data/data.json"
 let countries
 let countryID = 0
 
