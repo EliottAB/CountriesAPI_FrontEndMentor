@@ -1,7 +1,7 @@
 let countries
 let countryID = 0
 
-//get the coutry or countries datas.
+//get the country or countries datas.
 //arguments : url: string; targetIndex: number;
 export async function getDatas(url="./data/data.json", targetIndex){
     return fetch(url)
